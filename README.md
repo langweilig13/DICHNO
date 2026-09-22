@@ -4,63 +4,41 @@
 
 Reimplementation of Freyberger, Neuhierl, and Weber, *Dissecting Characteristics Nonparametrically*.
 
-The project reproduces the paper's spline-based return model and compares it with alternative feature-selection methods.
+The project reproduces the paper's nonparametric return-prediction approach and compares it with several feature-selection methods.
 
 ## Models
 
-- **Spline regression** — baseline additive quadratic spline model;
+- **Spline Regression** — additive quadratic spline baseline;
 - **Adaptive Group LASSO** — main method from the paper;
 - **Random Forest** — nonlinear benchmark with permutation importance;
 - **LassoNet** — neural network with feature sparsity.
 
 ## Data
 
-The model uses firm characteristics from CRSP and Compustat.
+The project uses firm characteristics constructed from CRSP and Compustat data.
 
-For every time period, each characteristic is transformed into its cross-sectional rank:
-
-$$
-\widetilde{C}_{s,i,t}
-=
-\frac{\operatorname{rank}(C_{s,i,t})}{N_t + 1}.
-$$
-
-The target is the next-period excess stock return.
-
-## Method
-
-Each characteristic is represented with quadratic spline basis functions:
-
-$$
-m_s(x)=\sum_k \beta_{sk}p_k(x).
-$$
-
-The final prediction is additive:
-
-$$
-\hat R_{i,t}
-=
-\sum_{s=1}^{S} m_s(C_{s,i,t-1}).
-$$
+For each time period, every characteristic is converted to its cross-sectional rank. The target is the next-period excess stock return.
 
 ## Project structure
 
 ```text
-src/
-├── model/
-│   ├── baseline_model.py
-│   └── group_lasso.py
-├── notebooks/
-│   └── init.ipynb
-└── transforms/
-    └── ranking.py
+.
+├── src/
+│   ├── model/
+│   │   ├── baseline_model.py
+│   │   └── group_lasso.py
+│   ├── notebooks/
+│   │   └── init.ipynb
+│   └── transforms/
+│       └── ranking.py
+└── README.md
 ```
 
 ## Experiments
 
-- reproduce the main historical results from the paper;
-- evaluate the model on July 2015–December 2025;
-- compare feature selection and out-of-sample forecasts across models.
+- reproduce the main results from the original paper;
+- evaluate the models on July 2015–December 2025;
+- compare feature selection and out-of-sample forecasts.
 
 ## Reference
 
