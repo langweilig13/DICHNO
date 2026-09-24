@@ -24,10 +24,12 @@ class BaselineSplineModel:
     def __init__(self, knots):
         self.knots = knots
         self.beta = None
+        self.train_loss = []
 
     def fit(self, X, y):
         X = build_matrix(X, self.knots)
         self.beta  = np.linalg.lstsq(X, y, rcond=None)[0]
+        self.train_loss.append(np.mean((X @ self.beta - y)**2))
 
     def predict(self, X):
         X = build_matrix(X, self.knots)
