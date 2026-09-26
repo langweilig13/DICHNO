@@ -3,8 +3,7 @@ from src.transforms.ranking import rank_transform
 
 def quadratic_spline_basis(x: list, knots:list) -> np.ndarray:
     """" x: list of n values of feature j"""
-    x = np.asarray(x)
-    x = rank_transform(x)
+    x = np.asarray(rank_transform(np.asarray(x)))
 
     features = [np.ones(x.shape[0]), x, x**2] # 1, x, x^2
     for knot in knots:
@@ -34,7 +33,6 @@ class BaselineSplineModel:
     def predict(self, X):
         X = build_matrix(X, self.knots)
         return X @ self.beta
-
 
 
 
