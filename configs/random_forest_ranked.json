@@ -1,0 +1,15 @@
+{
+  "description": "Alternative Random-Forest feature selection from rf-model-development-log",
+  "selector_target": "cross-sectional rank of next-month return",
+  "rank_features_within_month": true,
+  "selected_feature_count": 15,
+  "random_forest": {
+    "n_estimators": 150,
+    "max_depth": 12,
+    "min_samples_leaf": 25,
+    "min_samples_split": 10,
+    "max_features": "sqrt",
+    "max_samples": 0.7,
+    "random_state": 42
+  }
+}

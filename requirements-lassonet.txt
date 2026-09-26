@@ -1,0 +1,3 @@
+-r requirements.txt
+torch>=2.1
+lassonet==0.0.20

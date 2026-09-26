@@ -1,0 +1,9 @@
+# Python runtime artifacts
+__pycache__/
+*.py[cod]
+.venv/
+
+# Local research inputs and generated outputs
+src/data/*.csv
+src/data/*.zip
+results/
